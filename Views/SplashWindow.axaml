@@ -1,0 +1,76 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="PcStressTester.Views.SplashWindow"
+        Width="460"
+        Height="260"
+        CanResize="False"
+        SystemDecorations="None"
+        WindowStartupLocation="CenterScreen"
+        Background="#0B1220"
+        ExtendClientAreaToDecorationsHint="True"
+        ExtendClientAreaChromeHints="NoChrome"
+        Title="Загрузка">
+
+  <Border CornerRadius="28"
+          Background="#0B1220"
+          Padding="28">
+    <Grid RowDefinitions="Auto,*,Auto">
+      <Grid ColumnDefinitions="Auto,*" ColumnSpacing="16">
+        <Border Width="58"
+                Height="58"
+                CornerRadius="18"
+                Background="#F16E5B">
+          <Grid>
+            <StackPanel HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Spacing="-2">
+              <TextBlock Text="PCST"
+                         HorizontalAlignment="Center"
+                         FontSize="16"
+                         FontWeight="Bold"
+                         Foreground="#1A0707" />
+              <TextBlock Text="2.2"
+                         HorizontalAlignment="Center"
+                         FontSize="12"
+                         FontWeight="Bold"
+                         Foreground="#1A0707" />
+            </StackPanel>
+          </Grid>
+        </Border>
+
+        <StackPanel Grid.Column="1" Spacing="4" VerticalAlignment="Center">
+          <TextBlock Text="Стресс-тестер ПК"
+                     FontSize="24"
+                     FontWeight="Bold"
+                     Foreground="#F5FAFF" />
+          <TextBlock Text="Подготовка мониторинга оборудования"
+                     FontSize="13"
+                     Foreground="#9FB2CB" />
+        </StackPanel>
+      </Grid>
+
+      <StackPanel Grid.Row="1"
+                  Spacing="16"
+                  VerticalAlignment="Center">
+        <TextBlock Name="StatusText"
+                   Text="Загрузка датчиков и базы данных..."
+                   HorizontalAlignment="Center"
+                   FontSize="15"
+                   FontWeight="SemiBold"
+                   Foreground="#D7E5F7" />
+        <ProgressBar IsIndeterminate="True"
+                     Height="10"
+                     CornerRadius="999"
+                     Background="#18263A"
+                     Foreground="#27C2A0" />
+      </StackPanel>
+
+      <TextBlock Grid.Row="2"
+                 Text="Проверка датчиков CPU, GPU и базы данных"
+                 HorizontalAlignment="Center"
+                 FontSize="12"
+                 Foreground="#6F86A6" />
+    </Grid>
+  </Border>
+</Window>
+

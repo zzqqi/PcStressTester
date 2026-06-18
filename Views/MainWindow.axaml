@@ -1,0 +1,219 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:controls="clr-namespace:PcStressTester.Controls"
+        x:Class="PcStressTester.Views.MainWindow"
+        Width="1180"
+        Height="840"
+        MinWidth="980"
+        MinHeight="720"
+        Title="Стресс-тестер ПК">
+
+  <ScrollViewer HorizontalScrollBarVisibility="Disabled">
+    <StackPanel Margin="28" Spacing="20">
+
+      <Border Classes="surface"
+              CornerRadius="24"
+              Padding="28">
+        <Grid ColumnDefinitions="*,280">
+          <StackPanel Spacing="8">
+            <TextBlock Text="Стресс-тестер ПК"
+                       FontSize="34"
+                       FontWeight="Bold" />
+            <TextBlock Text="Стресс-тестирование CPU и GPU, контроль температуры и мониторинг датчиков оборудования в реальном времени"
+                       FontSize="15"
+                       Foreground="#9FB2CB"
+                       TextWrapping="Wrap" />
+
+            <Border Background="#102337"
+                    BorderBrush="#1F4F68"
+                    BorderThickness="1"
+                    CornerRadius="18"
+                    Padding="18"
+                    Margin="0,16,0,0">
+              <StackPanel Spacing="10">
+                <TextBlock Text="{Binding TestBannerText}"
+                           FontSize="24"
+                           FontWeight="Bold"
+                           Opacity="{Binding TestBannerOpacity}" />
+                <TextBlock Text="{Binding TestStateText}"
+                           FontSize="16"
+                           FontWeight="SemiBold" />
+                <TextBlock Text="{Binding Status}"
+                           FontSize="14"
+                           Foreground="#A9BBD2"
+                           TextWrapping="Wrap" />
+                <Grid ColumnDefinitions="Auto,*" Margin="0,4,0,0">
+                  <TextBlock Text="Время теста"
+                             FontWeight="Bold"
+                             Foreground="#7FD9C8" />
+                  <TextBlock Grid.Column="1"
+                             Text="{Binding TestElapsedText}"
+                             HorizontalAlignment="Right"
+                             FontSize="18"
+                             FontWeight="Bold" />
+                </Grid>
+                <ProgressBar IsIndeterminate="{Binding TestProgressIsIndeterminate}"
+                             Height="12"
+                             CornerRadius="999" />
+              </StackPanel>
+            </Border>
+          </StackPanel>
+
+          <Border Grid.Column="1"
+                  Classes="panel"
+                  CornerRadius="20"
+                  Padding="18"
+                  Margin="20,0,0,0">
+            <StackPanel Spacing="12">
+              <TextBlock Text="Управление"
+                         FontSize="20"
+                         FontWeight="Bold" />
+              <TextBlock Text="Запускайте тесты отдельно и следите за датчиками во время нагрузки."
+                         TextWrapping="Wrap"
+                         FontSize="13"
+                         Foreground="#93A8C4" />
+
+              <Button Classes="primary"
+                      Content="Обновить датчики"
+                      Command="{Binding RefreshCommand}" />
+              <Button Content="Запустить тест CPU"
+                      Command="{Binding StartCpuTestCommand}" />
+              <Button Content="Запустить тест GPU"
+                      Command="{Binding StartGpuTestCommand}" />
+              <Button Classes="warn"
+                      Content="Остановить тест"
+                      Command="{Binding StopTestCommand}" />
+            </StackPanel>
+          </Border>
+        </Grid>
+      </Border>
+
+      <Grid ColumnDefinitions="*,*,*,*"
+            ColumnSpacing="14">
+        <Border Grid.Column="0" Classes="surface" CornerRadius="20" Padding="18">
+          <StackPanel Spacing="8">
+            <TextBlock Text="Температура CPU" FontSize="14" Foreground="#93A8C4" />
+            <TextBlock Text="{Binding CpuTempText}" FontSize="30" FontWeight="Bold" />
+            <TextBlock Text="Текущая температура основного датчика процессора" TextWrapping="Wrap" FontSize="12" Foreground="#6F86A6" />
+          </StackPanel>
+        </Border>
+
+        <Border Grid.Column="1" Classes="surface" CornerRadius="20" Padding="18">
+          <StackPanel Spacing="8">
+            <TextBlock Text="Загрузка CPU" FontSize="14" Foreground="#93A8C4" />
+            <TextBlock Text="{Binding CpuLoadText}" FontSize="30" FontWeight="Bold" />
+            <TextBlock Text="Общая загрузка процессора по доступным датчикам" TextWrapping="Wrap" FontSize="12" Foreground="#6F86A6" />
+          </StackPanel>
+        </Border>
+
+        <Border Grid.Column="2" Classes="surface" CornerRadius="20" Padding="18">
+          <StackPanel Spacing="8">
+            <TextBlock Text="Температура GPU" FontSize="14" Foreground="#93A8C4" />
+            <TextBlock Text="{Binding GpuTempText}" FontSize="30" FontWeight="Bold" />
+            <TextBlock Text="Температура видеокарты по предпочтительному датчику" TextWrapping="Wrap" FontSize="12" Foreground="#6F86A6" />
+          </StackPanel>
+        </Border>
+
+        <Border Grid.Column="3" Classes="surface" CornerRadius="20" Padding="18">
+          <StackPanel Spacing="8">
+            <TextBlock Text="Загрузка GPU" FontSize="14" Foreground="#93A8C4" />
+            <TextBlock Text="{Binding GpuLoadText}" FontSize="30" FontWeight="Bold" />
+            <TextBlock Text="Загрузка видеокарты по данным мониторинга" TextWrapping="Wrap" FontSize="12" Foreground="#6F86A6" />
+          </StackPanel>
+        </Border>
+      </Grid>
+
+      <Grid ColumnDefinitions="1.15*,0.85*" ColumnSpacing="16">
+        <Border Grid.Column="0" Classes="surface" CornerRadius="22" Padding="20">
+          <StackPanel Spacing="14">
+            <Grid ColumnDefinitions="*,Auto">
+              <StackPanel Spacing="4">
+                <TextBlock Text="{Binding ActiveStressTitle}" FontSize="22" FontWeight="Bold" />
+                <TextBlock Text="{Binding ActiveStressDescription}" FontSize="13" Foreground="#93A8C4" TextWrapping="Wrap" />
+              </StackPanel>
+              <Border Grid.Column="1" Background="#123042" BorderBrush="#235D75" BorderThickness="1" CornerRadius="999" Padding="12,8">
+                <TextBlock Text="{Binding ActiveStressLoadPercent, StringFormat={}{0}%}" FontWeight="Bold" Foreground="#8CE8D8" />
+              </Border>
+            </Grid>
+
+            <ProgressBar Minimum="0" Maximum="100" Value="{Binding ActiveStressLoadPercent}" Height="12" CornerRadius="999" />
+
+            <Border Classes="panel" CornerRadius="18" Padding="8">
+              <Grid>
+                <controls:CpuStressPanel Height="220"
+                                         IsVisible="{Binding IsCpuStressPreviewVisible}"
+                                         IsActive="{Binding IsCpuTestRunning}"
+                                         IntensityPercent="{Binding CpuStressLoadPercent}" />
+                <controls:GpuStressPanel Height="220"
+                                         IsVisible="{Binding IsGpuStressPreviewVisible}"
+                                         IsActive="{Binding IsGpuTestRunning}"
+                                         IntensityPercent="{Binding GpuStressLoadPercent}" />
+              </Grid>
+            </Border>
+          </StackPanel>
+        </Border>
+
+        <Border Grid.Column="1" Classes="surface" CornerRadius="22" Padding="20">
+          <StackPanel Spacing="12">
+            <TextBlock Text="Советы" FontSize="22" FontWeight="Bold" />
+            <Border Classes="panel" CornerRadius="16" Padding="14">
+              <TextBlock Text="1. Сначала обновите датчики, чтобы убедиться, что мониторинг работает корректно." TextWrapping="Wrap" FontSize="13" />
+            </Border>
+            <Border Classes="panel" CornerRadius="16" Padding="14">
+              <TextBlock Text="2. Запускайте тесты CPU и GPU отдельно, чтобы понять, какой компонент нагревается сильнее." TextWrapping="Wrap" FontSize="13" />
+            </Border>
+            <Border Classes="panel" CornerRadius="16" Padding="14">
+              <TextBlock Text="3. При длительной нагрузке следите и за процентом загрузки, и за температурой." TextWrapping="Wrap" FontSize="13" />
+            </Border>
+            <Border Background="#2C2010" BorderBrush="#8F6B30" BorderThickness="1" CornerRadius="16" Padding="14">
+              <TextBlock Text="При перегреве тест остановится автоматически." TextWrapping="Wrap" FontSize="13" Foreground="#FFD79E" />
+            </Border>
+          </StackPanel>
+        </Border>
+      </Grid>
+
+      <Border Classes="surface" CornerRadius="22" Padding="20">
+        <StackPanel Spacing="14">
+          <Grid ColumnDefinitions="*,Auto">
+            <StackPanel Spacing="4">
+              <TextBlock Text="Системные датчики" FontSize="22" FontWeight="Bold" />
+              <TextBlock Text="Сырые значения оборудования, отсортированные по устройству и типу датчика" FontSize="13" Foreground="#93A8C4" />
+            </StackPanel>
+            <Border Grid.Column="1" Background="#132338" BorderBrush="#25415E" BorderThickness="1" CornerRadius="999" Padding="12,8">
+              <TextBlock Text="{Binding Sensors.Count, StringFormat=Записей: {0}}" Foreground="#B7C7DA" FontWeight="SemiBold" />
+            </Border>
+          </Grid>
+
+          <Border Classes="panel" CornerRadius="18" Padding="14">
+            <Grid RowDefinitions="Auto,*">
+              <Grid ColumnDefinitions="200,280,120,120" ColumnSpacing="10">
+                <TextBlock Text="Устройство" FontWeight="Bold" Foreground="#7FD9C8" />
+                <TextBlock Grid.Column="1" Text="Датчик" FontWeight="Bold" Foreground="#7FD9C8" />
+                <TextBlock Grid.Column="2" Text="Тип" FontWeight="Bold" Foreground="#7FD9C8" />
+                <TextBlock Grid.Column="3" Text="Значение" FontWeight="Bold" Foreground="#7FD9C8" />
+              </Grid>
+
+              <ScrollViewer Grid.Row="1" Margin="0,12,0,0" MaxHeight="320">
+                <ItemsControl ItemsSource="{Binding Sensors}">
+                  <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                      <Border Background="#111B2D" BorderBrush="#1E2B41" BorderThickness="1" CornerRadius="12" Margin="0,0,0,8" Padding="12">
+                        <Grid ColumnDefinitions="200,280,120,120" ColumnSpacing="10">
+                          <TextBlock Text="{Binding Hardware}" TextWrapping="Wrap" />
+                          <TextBlock Grid.Column="1" Text="{Binding Name}" TextWrapping="Wrap" />
+                          <TextBlock Grid.Column="2" Text="{Binding Type}" Foreground="#A4B8D3" />
+                          <TextBlock Grid.Column="3" Text="{Binding Value}" FontWeight="SemiBold" />
+                        </Grid>
+                      </Border>
+                    </DataTemplate>
+                  </ItemsControl.ItemTemplate>
+                </ItemsControl>
+              </ScrollViewer>
+            </Grid>
+          </Border>
+        </StackPanel>
+      </Border>
+
+    </StackPanel>
+  </ScrollViewer>
+</Window>

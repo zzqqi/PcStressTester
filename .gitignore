@@ -1,0 +1,25 @@
+# Сборка .NET
+bin/
+obj/
+publish/
+
+# Локальный кэш dotnet (если есть в родительских папках)
+**/.dotnet_home/
+**/.dotnet_home2/
+
+# IDE
+.vs/
+.idea/
+*.user
+*.suo
+
+# База данных (создаётся при запуске)
+Data/*.db
+Data/*.db-*
+
+# OS
+Thumbs.db
+Desktop.ini
+
+# Архивы проекта
+*.zip

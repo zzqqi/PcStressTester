@@ -1,0 +1,111 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="PcStressTester.App">
+  <Application.Styles>
+    <FluentTheme />
+    <Style Selector="Application">
+      <Setter Property="RequestedThemeVariant" Value="Dark" />
+    </Style>
+
+    <Style Selector="Window">
+      <Setter Property="Background" Value="#0B1220" />
+    </Style>
+
+    <Style Selector="TextBlock">
+      <Setter Property="Foreground" Value="#E5EEF8" />
+    </Style>
+
+    <Style Selector="Border.surface">
+      <Setter Property="Background" Value="#162033" />
+      <Setter Property="BorderBrush" Value="#26344D" />
+      <Setter Property="BorderThickness" Value="1" />
+      <Setter Property="BoxShadow" Value="0 18 40 0 #40000000" />
+    </Style>
+
+    <Style Selector="Border.panel">
+      <Setter Property="Background" Value="#0F1728" />
+      <Setter Property="BorderBrush" Value="#22304A" />
+      <Setter Property="BorderThickness" Value="1" />
+    </Style>
+
+    <Style Selector="Button">
+      <Setter Property="CornerRadius" Value="12" />
+      <Setter Property="Padding" Value="16,12" />
+      <Setter Property="FontWeight" Value="SemiBold" />
+      <Setter Property="Background" Value="#23314D" />
+      <Setter Property="Foreground" Value="#F5FAFF" />
+      <Setter Property="BorderBrush" Value="#314567" />
+      <Setter Property="BorderThickness" Value="1" />
+    </Style>
+
+    <Style Selector="Button:pointerover">
+      <Setter Property="Background" Value="#2B3D60" />
+      <Setter Property="Foreground" Value="#FFFFFF" />
+      <Setter Property="BorderBrush" Value="#43608E" />
+    </Style>
+
+    <Style Selector="Button:pressed">
+      <Setter Property="Background" Value="#1B2740" />
+      <Setter Property="Foreground" Value="#FFFFFF" />
+      <Setter Property="BorderBrush" Value="#4D6A96" />
+    </Style>
+
+    <Style Selector="Button:disabled">
+      <Setter Property="Background" Value="#182131" />
+      <Setter Property="Foreground" Value="#C9D5E6" />
+      <Setter Property="BorderBrush" Value="#243247" />
+      <Setter Property="Opacity" Value="0.92" />
+    </Style>
+
+    <Style Selector="Button.primary">
+      <Setter Property="Background" Value="#27C2A0" />
+      <Setter Property="Foreground" Value="#07151A" />
+    </Style>
+
+    <Style Selector="Button.primary:pointerover">
+      <Setter Property="Background" Value="#38D4B1" />
+      <Setter Property="Foreground" Value="#07151A" />
+      <Setter Property="BorderBrush" Value="#57E6C6" />
+    </Style>
+
+    <Style Selector="Button.primary:pressed">
+      <Setter Property="Background" Value="#1FA889" />
+      <Setter Property="Foreground" Value="#041014" />
+      <Setter Property="BorderBrush" Value="#4FE0BE" />
+    </Style>
+
+    <Style Selector="Button.primary:disabled">
+      <Setter Property="Background" Value="#1B5D52" />
+      <Setter Property="Foreground" Value="#E9FFFA" />
+      <Setter Property="BorderBrush" Value="#2C786B" />
+    </Style>
+
+    <Style Selector="Button.warn">
+      <Setter Property="Background" Value="#F16E5B" />
+      <Setter Property="Foreground" Value="White" />
+    </Style>
+
+    <Style Selector="Button.warn:pointerover">
+      <Setter Property="Background" Value="#FF7F6B" />
+      <Setter Property="Foreground" Value="#FFFFFF" />
+      <Setter Property="BorderBrush" Value="#FF9B8A" />
+    </Style>
+
+    <Style Selector="Button.warn:pressed">
+      <Setter Property="Background" Value="#D85D4B" />
+      <Setter Property="Foreground" Value="#FFFFFF" />
+      <Setter Property="BorderBrush" Value="#FF9A88" />
+    </Style>
+
+    <Style Selector="Button.warn:disabled">
+      <Setter Property="Background" Value="#6F342A" />
+      <Setter Property="Foreground" Value="#FFF1EE" />
+      <Setter Property="BorderBrush" Value="#8B4538" />
+    </Style>
+
+    <Style Selector="ProgressBar">
+      <Setter Property="Foreground" Value="#27C2A0" />
+      <Setter Property="Background" Value="#243249" />
+    </Style>
+  </Application.Styles>
+</Application>
