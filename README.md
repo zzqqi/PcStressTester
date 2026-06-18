@@ -5,7 +5,7 @@
 ## Скачать
 
 - **Исполняемый файл:** [dist/PcStressTester.exe](dist/PcStressTester.exe) (~82 МБ, Windows x64, self-contained)
-- **Видео демонстрации:** см. [Releases](https://github.com/zzqqi/PcStressTester/releases) (если загружено)
+- **Видео демонстрации:** [video/PcStressTeast.mp4](video/PcStressTeast.mp4) (~103 МБ)
 
 ## Запуск
 
